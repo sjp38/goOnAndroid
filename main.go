@@ -11,6 +11,11 @@ const baseCheckURL = "https://github.com/torvalds/linux/releases/tag/"
 const version = "v3.18"
 
 func handleKernelRelease(w http.ResponseWriter, r *http.Request) {
+	versionArr, ok := r.URL.Query()["version"]
+	version := ""
+	if ok {
+		version = versionArr[0]
+	}
 	checkURL := fmt.Sprintf("%s%s", baseCheckURL, version)
 	if testUrl(checkURL) {
 		io.WriteString(w, fmt.Sprintf("%s Released", version))
