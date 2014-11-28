@@ -24,9 +24,9 @@ func handleKernelRelease(w http.ResponseWriter, r *http.Request) {
 	}
 	checkURL := fmt.Sprintf("%s%s", baseCheckURL, version)
 	if testUrl(checkURL) {
-		io.WriteString(w, fmt.Sprintf("%s Released", version))
+		io.WriteString(w, fmt.Sprintf("<h1>%s Released</h1>", version))
 	} else {
-		io.WriteString(w, fmt.Sprintf("%s Not released yet", version))
+		io.WriteString(w, fmt.Sprintf("<h1>%s Not released yet</h1>", version))
 	}
 }
 
